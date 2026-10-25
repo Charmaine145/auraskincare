@@ -1,22 +1,45 @@
-# Demo video script (about 5½ minutes)
+# Aria — AI Voice Customer Care Demo Script
+**Duration: Approximately 5 minutes 30 seconds**
 
-| Time | Do / say | Point out on screen |
-| --- | --- | --- |
-| 0:00–0:20 | "This is Aria, a voice support agent for Aura Skincare." | The test orders and the conversation panel. |
-| 0:20–0:55 | **Start call.** After the greeting: *"Where is my order O R D one oh one?"* | The orb turns emerald while listening, amber while thinking, violet while speaking. The trace shows `get_order_details(order_id: "ORD-101")` and *Answered from the order record*: a plain status question needs no model call, so the reply is tagged **instant**. Point at the response time under the reply. |
-| 0:55–1:25 | *"Can I return ORD-102?"* | The refusal (14 days, beyond the 7-day window) carries a **policy** tag: the server made the decision and wrote the words. |
-| 1:25–2:00 | *"Please cancel ORD-103."* → Aria asks to confirm → *"Yes, go ahead."* | *Confirmation before action* in the trace; the ORD-103 badge flips to **Cancelled** live. |
-| 2:00–2:20 | *"Can you book me a flight to Goa?"* | Polite scope refusal. |
-| 2:20–2:45 | *"Can I talk to a real person?"* | Aria provides a support reference; the trace shows the escalation tool. Explain that this creates a **demo ticket** and does not contact a real agent. |
-| 2:45–3:00 | Start talking while Aria is answering (or press ✋). | Barge-in: she fades out and listens; the bubble is marked *interrupted*. |
-| 3:00–3:20 | *"That's all, thank you. Bye!"* | Aria says goodbye and ends the call herself. |
-| 3:20–4:00 | The **Call summary** sheet opens by itself. | Intent / order / resolution tiles, issues handled, actions taken and the support ticket reference/status, then the **JSON** tab, Copy JSON and Transcript. Point out the optional star rating and comment; submit a rating or skip it. Mention that the summary facts come from the verified tool log. |
-| 4:00–4:25 | Click the **Aura Skincare** wordmark and switch to **Aura Haircare**. Tap *Ask about a return* (*"Can I return ORD-202?"*). | Multi-brand: same agent, different policy. ORD-202 was delivered 9 days ago; Aura Haircare's 10-day window allows it, where Aura Skincare's 7-day window refused ORD-102. |
-| 4:25–4:55 | Open **How it works** in the header. | Speech recognition → Gemini function calling → server tools and policy engine → streamed neural voice → summary. Guardrails: order-ID provenance, decisions in code, verbatim refusals, confirmation, scope. |
-| 4:55–5:30 | Navigate to `/admin` (log in with the configured admin token if prompted). | Show conversation and resolution metrics, verified tool outcomes, satisfaction, and the escalation ticket. If you change the ticket status, point out the available workflow states. Remind viewers that the dashboard contains demo data, not production customer records. |
+| Time | Do / Say | Point Out on Screen |
+|---|---|---|
+| **0:00–0:20** | “This is Aria, an AI voice customer-support agent built for Aura Skincare.” | Show the sample orders, conversation panel, and call controls. |
+| **0:20–0:55** | Click **Start Call**. After Aria greets you, ask: “Where is my order O R D one oh one?” | Point out the call status as it changes through Connecting, Thinking, Speaking, and Listening, depending on the current stage. Show the `get_order_details` tool call in the trace and the order information in Aria’s response. If the instant path is active, highlight the **instant** tag and response time. |
+| **0:55–1:25** | Ask: “Can I return ORD-102?” | Show the policy-based refusal. Explain that the order was delivered 14 days ago, beyond Aura Skincare’s seven-day return window. Point out the policy tag if displayed. |
+| **1:25–2:00** | Ask: “Please cancel ORD-103.” When Aria asks for confirmation, say: “Yes, go ahead.” | Show the confirmation step and the order’s status changing to Cancelled, if the deployed version performs the update successfully. Explain that cancellation requires explicit confirmation. |
+| **2:00–2:20** | Ask: “Can you book me a flight to Goa?” | Show how Aria politely declines unrelated requests and redirects the conversation to Aura customer support. |
+| **2:20–2:45** | Ask: “Can I talk to a real person?” | Show the support reference and escalation details. Explain that this creates a demo ticket rather than contacting a real support representative. |
+| **2:45–3:00** | Speak while Aria is responding, or use the interruption control if available. | Demonstrate interruption handling. Explain that the agent should stop speaking and return to listening when interrupted. |
+| **3:00–3:20** | Say: “That’s all, thank you. Bye!” | Show Aria's goodbye and the call ending, if automatic call termination works as expected. |
+| **3:20–4:00** | Open the Call Summary after the call ends. | Show the customer intent, order, resolution, issues, actions, and support ticket details. Open the JSON view and demonstrate copying or downloading the summary. Mention the optional rating and comment. Explain that verified facts should come from recorded tool outcomes. |
+| **4:00–4:25** | Switch from Aura Skincare to Aura Haircare using the brand selector. Ask: “Can I return ORD-202?” | Explain that the same agent supports multiple brands with different policies. Aura Haircare has a ten-day return window, so an order delivered nine days ago is within its stated window. Show the actual eligibility result. |
+| **4:25–4:55** | Open **How it works** in the header. | Explain the pipeline: speech recognition → AI agent and tool calling → server-side policy checks → spoken response → call summary. Highlight order validation, cancellation confirmation, and policy enforcement. |
+| **4:55–5:30** | Navigate to `/admin` and authenticate if prompted. | Show the available conversation metrics, resolution counts, tool outcomes, customer ratings, and demo tickets. If available, change a ticket’s status and explain the workflow. Clarify that this dashboard contains demonstration data, not real customer records. |
 
-**A short Hindi moment** works well: pick Hindi in ⚙, then ask *"मेरा ऑर्डर ORD-101 कहाँ है?"*. Aria answers in Hindi with a Hindi voice.
+## Optional Hindi Demonstration
 
-**Optional extras if time allows:** the brief's example *"I bought this 20 days ago and have opened it, can I return it?"*, *"Where is ORD-999?"*, or Hinglish: *"Mera order ORD-101 kab tak aayega?"* (all in the ✦ scenarios menu too).
+Select Hindi in the voice settings and ask:
 
-**If something goes wrong on camera:** typing works for every scenario, and Aria still speaks her replies. If the voice service fails, the next voice in the chain (Sarvam, then the browser's) takes over. Say so rather than cutting it.
+“मेरा ऑर्डर ORD-101 कहाँ है?”
+
+Point out the recognized request and Aria’s Hindi response, provided multilingual speech is working in the deployed environment.
+
+## Optional Scenarios
+
+If time permits, demonstrate one of these:
+
+- “Where is ORD-999?” — demonstrates unknown-order handling.
+- “I bought this 20 days ago and opened it. Can I return it?” — demonstrates policy enforcement without an order ID.
+- “Mera order ORD-101 kab tak aayega?” — demonstrates Hinglish handling.
+
+## If Something Goes Wrong
+
+If the microphone does not work, use text chat or a suggested question.
+
+If a voice provider fails, try again or explain the configured fallback only if it is available in the deployed version.
+
+If a rating, cancellation, ticket, or summary does not save, do not claim that the operation succeeded. Point out the issue and explain that the relevant backend behavior needs verification.
+
+## Closing Statement
+
+“Aria demonstrates how voice-based AI, tool calling, server-side policy enforcement, and structured summaries can work together to create a more transparent customer-support experience. The current application uses fictional brands and sample orders, providing a foundation for further testing and future integration with real support systems.”
