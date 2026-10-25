@@ -9,7 +9,7 @@ import { X } from "lucide-react";
  * Animated overlay used for the trace drawer ("right") and dialogs ("center").
  * Escape and the backdrop close it; focus moves in on open and back out on close.
  */
-export function Sheet({ open, onClose, title, side = "center", width, children, footer }: {
+export function Sheet({ open, onClose, title, side = "center", width, children, footer, className }: {
   open: boolean;
   onClose: () => void;
   title: ReactNode;
@@ -17,6 +17,7 @@ export function Sheet({ open, onClose, title, side = "center", width, children, 
   width?: number;
   children: ReactNode;
   footer?: ReactNode;
+  className?: string;
 }) {
   const panel = useRef<HTMLDivElement>(null);
   const close = useRef(onClose);
@@ -51,7 +52,7 @@ export function Sheet({ open, onClose, title, side = "center", width, children, 
             aria-modal="true"
             aria-label={typeof title === "string" ? title : undefined}
             tabIndex={-1}
-            className={`sheet ${side}`}
+            className={`sheet ${side}${className ? ` ${className}` : ""}`}
             style={width ? { width: `min(${width}px, calc(100vw - 24px))` } : undefined}
             initial={fromRight ? { x: "104%" } : { opacity: 0, y: 24, scale: 0.97 }}
             animate={fromRight ? { x: 0 } : { opacity: 1, y: 0, scale: 1 }}
@@ -59,7 +60,7 @@ export function Sheet({ open, onClose, title, side = "center", width, children, 
             transition={{ type: "spring", stiffness: 320, damping: 34 }}
           >
             <header className="sheet-head">
-              <h2>{title}</h2>
+              {typeof title === "string" ? <h2>{title}</h2> : <div className="sheet-head-title">{title}</div>}
               <button className="icon-btn" onClick={onClose} aria-label="Close">
                 <X size={17} />
               </button>
