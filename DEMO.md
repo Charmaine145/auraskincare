@@ -1,10 +1,8 @@
 # Demo video script (about 5½ minutes)
 
-Record the **deployed HTTPS app** in Chrome or Edge with headphones. Aria's natural Indian voices (Neerja for English, Swara for Hindi, Shruti for Telugu) come from the server, so every browser sounds the same; the trace shows "Edge Neural · Neerja" on each reply. Keep the browser address bar visible. Before recording, check that the header shows the Gemini model (not "Rule-based demo"), and use the ⚙ settings next to the call button to check the language and hear the voice. Open **Trace** in the header and keep it open on the right while you talk. It's the best way to show the agent at work. Set `ADMIN_TOKEN` in the deployment if you want to show the protected admin dashboard at the end.
-
 | Time | Do / say | Point out on screen |
 | --- | --- | --- |
-| 0:00–0:20 | "This is Aria, a voice support agent for Aura Skincare." | The orb, the test orders and the conversation panel. |
+| 0:00–0:20 | "This is Aria, a voice support agent for Aura Skincare." | The test orders and the conversation panel. |
 | 0:20–0:55 | **Start call.** After the greeting: *"Where is my order O R D one oh one?"* | The orb turns emerald while listening, amber while thinking, violet while speaking. The trace shows `get_order_details(order_id: "ORD-101")` and *Answered from the order record*: a plain status question needs no model call, so the reply is tagged **instant**. Point at the response time under the reply. |
 | 0:55–1:25 | *"Can I return ORD-102?"* | The refusal (14 days, beyond the 7-day window) carries a **policy** tag: the server made the decision and wrote the words. |
 | 1:25–2:00 | *"Please cancel ORD-103."* → Aria asks to confirm → *"Yes, go ahead."* | *Confirmation before action* in the trace; the ORD-103 badge flips to **Cancelled** live. |
