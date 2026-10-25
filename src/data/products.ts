@@ -1,0 +1,266 @@
+import type { BrandId } from "./brand";
+
+/**
+ * A small, verified product catalogue for the two demo brands. Aria may only talk about
+ * these products: no invented ingredients, prices, stock or medical claims. Every entry is
+ * sample data, clearly separated from any real brand catalogue.
+ */
+
+export interface Product {
+  id: string;
+  brand: BrandId;
+  name: string;
+  size: string;
+  /** Price in rupees. */
+  price: number;
+  category: "Cleanser" | "Toner" | "Serum" | "Moisturiser" | "Sunscreen" | "Lip care" | "Kit" | "Hair oil" | "Shampoo" | "Scalp tonic" | "Comb" | "Hair mask";
+  concerns: string[];
+  skin_types: string[];
+  description: string;
+  usage: string;
+  key_ingredients: string[];
+  availability: "In stock" | "Out of stock";
+  /** Suitability note, phrased without diagnosis or promises. */
+  note?: string;
+}
+
+export const PRODUCTS: Product[] = [
+  {
+    id: "AUR-P01",
+    brand: "aura",
+    name: "Vitamin C Serum",
+    size: "30ml",
+    price: 699,
+    category: "Serum",
+    concerns: ["dullness", "brightening", "uneven tone"],
+    skin_types: ["normal", "combination", "oily"],
+    description: "A lightweight morning serum designed to brighten the look of dull skin and support an even-looking tone.",
+    usage: "Apply 3–4 drops to clean skin in the morning, before moisturiser and sunscreen.",
+    key_ingredients: ["10% vitamin C", "hyaluronic acid", "aloe vera"],
+    availability: "In stock",
+    note: "Patch test first if your skin is sensitive. Use sunscreen during the day.",
+  },
+  {
+    id: "AUR-P02",
+    brand: "aura",
+    name: "Hydrating Sunscreen SPF 50",
+    size: "50g",
+    price: 499,
+    category: "Sunscreen",
+    concerns: ["sun protection", "hydration"],
+    skin_types: ["normal", "dry", "combination", "oily", "sensitive"],
+    description: "A broad-spectrum SPF 50 sunscreen with a light, non-greasy finish for everyday use.",
+    usage: "Apply generously as the last step of your morning routine, and reapply every 3–4 hours outdoors.",
+    key_ingredients: ["SPF 50 filters", "glycerin", "aloe vera"],
+    availability: "In stock",
+    note: "For a rash or persistent irritation, stop use and speak to a dermatologist.",
+  },
+  {
+    id: "AUR-P03",
+    brand: "aura",
+    name: "Green Tea Face Wash",
+    size: "100ml",
+    price: 449,
+    category: "Cleanser",
+    concerns: ["oil control", "blemish-prone skin", "daily cleansing"],
+    skin_types: ["oily", "combination"],
+    description: "A gentle gel cleanser for oily and combination skin that lifts daily oil and grime without a tight feeling.",
+    usage: "Massage a small amount onto damp skin morning and evening, then rinse well.",
+    key_ingredients: ["green tea extract", "coconut-derived cleansers", "glycerin"],
+    availability: "In stock",
+  },
+  {
+    id: "AUR-P04",
+    brand: "aura",
+    name: "Rose Water Toner",
+    size: "100ml",
+    price: 349,
+    category: "Toner",
+    concerns: ["soothing", "hydration", "refreshment"],
+    skin_types: ["dry", "normal", "sensitive"],
+    description: "A alcohol-free rose water mist that refreshes and adds a light layer of hydration.",
+    usage: "Mist over clean skin after cleansing, or use during the day to refresh.",
+    key_ingredients: ["rose water", "glycerin", "panthenol"],
+    availability: "In stock",
+  },
+  {
+    id: "AUR-P05",
+    brand: "aura",
+    name: "Ceramide Barrier Moisturiser",
+    size: "50g",
+    price: 1249,
+    category: "Moisturiser",
+    concerns: ["dryness", "barrier support", "sensitivity"],
+    skin_types: ["dry", "sensitive", "normal"],
+    description: "A cushiony cream with ceramides and squalane for dry or easily irritated skin that needs barrier support.",
+    usage: "Smooth over the face morning and evening after serum, as the final moisturising step.",
+    key_ingredients: ["ceramides", "squalane", "shea butter"],
+    availability: "In stock",
+    note: "Fragrance-free. If irritation persists, consult a qualified dermatologist.",
+  },
+  {
+    id: "AUR-P06",
+    brand: "aura",
+    name: "Niacinamide 10% Serum",
+    size: "30ml",
+    price: 599,
+    category: "Serum",
+    concerns: ["oil control", "visible pores", "blemish-prone skin"],
+    skin_types: ["oily", "combination"],
+    description: "A water-light serum designed to balance visible oil and refine the look of pores over time.",
+    usage: "Apply 2–3 drops to clean skin at night, then follow with moisturiser.",
+    key_ingredients: ["10% niacinamide", "zinc PCA", "hyaluronic acid"],
+    availability: "In stock",
+    note: "Introduce gradually if your skin is new to niacinamide.",
+  },
+  {
+    id: "AUR-P07",
+    brand: "aura",
+    name: "Complete Night Care Kit",
+    size: "4-piece kit",
+    price: 3200,
+    category: "Kit",
+    concerns: ["hydration", "barrier support", "night routine"],
+    skin_types: ["normal", "dry", "combination"],
+    description: "A four-step evening routine: gentle cleanser, hydrating toner, barrier serum and night moisturiser.",
+    usage: "Cleanse, tone, apply the serum, then seal in the night moisturiser. Use the full routine at night.",
+    key_ingredients: ["ceramides", "hyaluronic acid", "rose water"],
+    availability: "In stock",
+  },
+  {
+    id: "AUR-P08",
+    brand: "aura",
+    name: "SPF 30 Tinted Lip Balm",
+    size: "4.5g",
+    price: 299,
+    category: "Lip care",
+    concerns: ["sun protection", "dry lips", "tint"],
+    skin_types: ["all"],
+    description: "A tinted balm with SPF 30 that softens dry lips and adds a sheer wash of colour.",
+    usage: "Sweep on as needed through the day, and reapply after eating or drinking.",
+    key_ingredients: ["SPF 30 filters", "shea butter", "vitamin E"],
+    availability: "In stock",
+  },
+  {
+    id: "AUR-P09",
+    brand: "aura",
+    name: "Saffron Radiance Face Cream",
+    size: "50g",
+    price: 899,
+    category: "Moisturiser",
+    concerns: ["dullness", "brightening", "hydration"],
+    skin_types: ["normal", "dry"],
+    description: "A soft day cream with saffron extract for skin that looks tired or needs a little glow.",
+    usage: "Apply to clean skin in the morning after serum, before sunscreen.",
+    key_ingredients: ["saffron extract", "glycerin", "vitamin E"],
+    availability: "Out of stock",
+  },
+  {
+    id: "AUR-P10",
+    brand: "aura",
+    name: "Aloe Calm Gel",
+    size: "100ml",
+    price: 399,
+    category: "Moisturiser",
+    concerns: ["soothing", "hydration", "heat rash care"],
+    skin_types: ["sensitive", "oily", "normal"],
+    description: "A cooling aloe gel for skin that feels warm or needs light, non-sticky hydration.",
+    usage: "Apply a thin layer to clean skin as needed; keep it in the fridge for a cooler feel.",
+    key_ingredients: ["aloe vera", "cucumber extract", "panthenol"],
+    availability: "In stock",
+    note: "Not a treatment for a skin condition. See a qualified professional for persistent concerns.",
+  },
+  {
+    id: "VED-P01",
+    brand: "veda",
+    name: "Bhringraj Hair Oil",
+    size: "200ml",
+    price: 649,
+    category: "Hair oil",
+    concerns: ["hair fall", "scalp dryness", "breakage"],
+    skin_types: ["all"],
+    description: "A traditional bhringraj and amla oil for pre-wash scalp massage and dry, brittle-looking hair.",
+    usage: "Massage into the scalp 30 minutes before washing, or leave overnight once a week.",
+    key_ingredients: ["bhringraj", "amla", "sesame oil"],
+    availability: "In stock",
+  },
+  {
+    id: "VED-P02",
+    brand: "veda",
+    name: "Onion and Amla Shampoo",
+    size: "250ml",
+    price: 549,
+    category: "Shampoo",
+    concerns: ["hair fall", "weak hair", "daily cleansing"],
+    skin_types: ["all"],
+    description: "A sulphate-free shampoo with onion and amla extracts for hair that looks fuller and stronger.",
+    usage: "Massage into wet scalp, rinse, and repeat if needed. Follow with conditioner.",
+    key_ingredients: ["onion extract", "amla", "coconut-derived cleansers"],
+    availability: "In stock",
+  },
+  {
+    id: "VED-P03",
+    brand: "veda",
+    name: "Neem Scalp Tonic",
+    size: "100ml",
+    price: 549,
+    category: "Scalp tonic",
+    concerns: ["flaky scalp", "itchy scalp", "oil control"],
+    skin_types: ["all"],
+    description: "A light leave-in tonic with neem and tea tree for scalps that feel oily or flaky.",
+    usage: "Part the hair and spray onto the scalp, then massage gently. Use daily or as needed.",
+    key_ingredients: ["neem", "tea tree oil", "witch hazel"],
+    availability: "In stock",
+    note: "For persistent flaking, soreness or hair loss, consult a dermatologist.",
+  },
+  {
+    id: "VED-P04",
+    brand: "veda",
+    name: "Ayurvedic Hair Care Kit",
+    size: "4-piece kit",
+    price: 4200,
+    category: "Kit",
+    concerns: ["hair fall", "scalp care", "complete routine"],
+    skin_types: ["all"],
+    description: "A complete routine: bhringraj oil, onion and amla shampoo, neem scalp tonic and a neem wood comb.",
+    usage: "Oil weekly, shampoo 2–3 times a week, use the tonic on the scalp and comb gently.",
+    key_ingredients: ["bhringraj", "amla", "neem"],
+    availability: "In stock",
+  },
+  {
+    id: "VED-P05",
+    brand: "veda",
+    name: "Neem Wood Comb",
+    size: "1 comb",
+    price: 199,
+    category: "Comb",
+    concerns: ["static", "gentle detangling"],
+    skin_types: ["all"],
+    description: "A wide-tooth neem wood comb that glides through wet or dry hair and helps reduce static.",
+    usage: "Comb from the ends upwards, gently, on damp or dry hair.",
+    key_ingredients: ["neem wood"],
+    availability: "In stock",
+  },
+  {
+    id: "VED-P06",
+    brand: "veda",
+    name: "Amla Repair Hair Mask",
+    size: "150g",
+    price: 449,
+    category: "Hair mask",
+    concerns: ["dryness", "frizz", "breakage"],
+    skin_types: ["all"],
+    description: "A rich weekly mask with amla and shea for hair that feels dry or rough at the ends.",
+    usage: "Apply to washed, damp hair from mid-length to ends, leave for 10 minutes, then rinse.",
+    key_ingredients: ["amla", "shea butter", "rice protein"],
+    availability: "In stock",
+  },
+];
+
+/** Products belong to one brand only, exactly like orders. */
+export const productsFor = (brand: BrandId): Product[] => PRODUCTS.filter(product => product.brand === brand);
+
+export const productSearchText = (product: Product) =>
+  [product.name, product.category, product.description, product.concerns.join(" "), product.skin_types.join(" "), product.key_ingredients.join(" ")]
+    .join(" ")
+    .toLowerCase();

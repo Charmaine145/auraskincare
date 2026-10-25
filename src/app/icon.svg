@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 36" role="img" aria-label="Aura">
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c9b9ec" />
+      <stop offset="1" stop-color="#604892" />
+    </linearGradient>
+  </defs>
+  <rect width="36" height="36" rx="11" fill="url(#tile)" />
+  <g fill="#fdfaf1" transform="translate(18 18) scale(0.84) translate(-18 -18)">
+    <path d="M18 18C23.4 15 23.4 8.6 18 5.2 12.6 8.6 12.6 15 18 18Z" />
+    <path d="M18 18C23.4 15 23.4 8.6 18 5.2 12.6 8.6 12.6 15 18 18Z" transform="rotate(90 18 18)" />
+    <path d="M18 18C23.4 15 23.4 8.6 18 5.2 12.6 8.6 12.6 15 18 18Z" transform="rotate(180 18 18)" />
+    <path d="M18 18C23.4 15 23.4 8.6 18 5.2 12.6 8.6 12.6 15 18 18Z" transform="rotate(270 18 18)" />
+  </g>
+  <circle cx="18" cy="18" r="1.9" fill="#604892" />
+</svg>

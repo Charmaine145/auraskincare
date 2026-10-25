@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env*
+!.env.example
+*.tsbuildinfo
+tmp/
+output/
+Task.pdf
+.claude/
+plan.md
+.data/
